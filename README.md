@@ -1,6 +1,6 @@
 # Apartment Rental Database (Oracle SQL)
 
-This repository contains the design, implementation, and testing of an apartment rental relational database system. It simulates a property rental service, covering aspects such as apartment listings, owner details, and tenant interactions. It supports key operations like listing available apartments, querying ownership details, and tracking rentals.
+This repository contains the design, implementation and testing of an apartment rental relational database system. It simulates a property rental service, covering aspects such as apartment listings, owner details and tenant interactions. It supports key operations like listing available apartments, querying ownership details and tracking rentals.
 
 ![ER Diagram](/images/ER.jpg)
 
@@ -20,7 +20,7 @@ This was a group project developed for the Advanced Database Systems course in t
 
 Additionally, the following PDF documents are included in the `docs/` folder:
 - `test_plan.pdf`: A document outlining test cases and expected/actual outcomes used to validate the database.
-- `table_specifications.pdf`: A detailed breakdown of all table structures, relationships, and design decisions.
+- `table_specifications.pdf`: A detailed breakdown of all table structures, relationships and design decisions.
 
 ## Technologies Used
 - Oracle SQL
