@@ -1,34 +1,34 @@
-# Apartment Rental Database (Oracle SQL)
+# Rental Property Management Database
 
-This repository contains the design, implementation and testing of an apartment rental relational database system. It simulates a property rental service, covering aspects such as apartment listings, owner details and tenant interactions. It supports key operations like listing available apartments, querying ownership details and tracking rentals.
+This repository contains the design and testing of a relational database design for a rental property management scenario.
+The goal was to design a clean, normalized schema and demonstrate how basic data engineering practices can make the model easier to maintain and analyze.
 
-![ER Diagram](/images/ER.jpg)
+It is a project that demonstrates relational data modeling, data governance through database-level constraints and analytical querying to extract business intelligence.
 
-## Project Context
+![ER Diagram](docs/ER_diagram.jpg)
 
-This was a group project developed for the Advanced Database Systems course in the Data Science MSc program at International Hellenic University.
+## Key Architecture & Design Choices
 
-## Project Files
+This database was designed with a focus on data integrity and modularity. Key engineering decisions include:
 
-| File Name         | Description                                         |
-|-------------------|-----------------------------------------------------|
-| `create.sql`      | Script to create all required tables                |
-| `insert.sql`      | Script to populate the tables with test data        |
-| `constraint.sql`  | Script to add primary and foreign key constraints   |
-| `query.sql`       | Tested queries demonstrating database functionality |
-| `drop.sql`        | Script to drop all tables and clean up              |
+* **Normalization (3NF):** The schema is normalized to eliminate data redundancy and ensure a single source of truth for dynamic entities (tenants, properties, rental agreements).
+* **Data Governance:** Referential integrity (Foreign Keys) and column constraints (`CHECK`, `UNIQUE`, `NOT NULL`) were implemented at the database level to prevent malformed data from ever reaching the application layer.
+* **Synthetic Data:** The `seed_data_dml.sql` script is intentionally populated with synthetic data designed to test constraints and business logic (e.g., overlapping dates, multiple rentals per tenant), rather than predictable scenarios.
+* **Querying:** Analytical queries were constructed as a basis for Business Intelligence reporting. They require complex `JOIN`s for read-heavy operations like revenue tracking and occupancy rates.
+* **Modular Script Architecture:** DDL, constraints, data seeding and analytical queries are isolated into distinct numbered scripts. This mimics CI/CD deployment and isolates logic for easier debugging.
 
-Additionally, the following PDF documents are included in the `docs/` folder:
-- `test_plan.pdf`: A document outlining test cases and expected/actual outcomes used to validate the database.
-- `table_specifications.pdf`: A detailed breakdown of all table structures, relationships and design decisions.
+## Repository Structure
 
-## Technologies Used
-- Oracle SQL
-- SQL*Plus
-- ER modeling
+The repository is organized into SQL scripts that were developed in a logical order:
 
-## Features
-- Relational model with normalization
-- Referential integrity with foreign keys
-- Verified with a comprehensive test plan
-- Functional queries for real-world scenarios
+- `src/01_schema_ddl.sql`: create tables and main schema definitions
+- `src/02_constraints.sql`: add keys, indexes, integrity constraints
+- `src/03_seed_data_dml.sql`: insert synthetic data for testing and exploration
+- `src/04_analytical_queries.sql`: example queries for basic business reporting and testing integrity
+- `src/99_teardown.sql`: cleanup script to drop tables when needed
+
+Documentation and design artifacts are stored in `docs/`:
+
+- `docs/schema_design.pdf`: explanation of entity relationships and design choices
+- `docs/testing_validation.pdf`: summary of validation checks and outcomes
+- `docs/ER_diagram.jpg`: entity-relationship diagram for the schema
