@@ -5,7 +5,7 @@ The goal was to design a clean, normalized schema and demonstrate how basic data
 
 It is a project that demonstrates relational data modeling, data governance through database-level constraints and analytical querying to extract business intelligence.
 
-![ER Diagram](docs/ER_diagram.jpg)
+![ER Diagram](docs/ER_diagram.svg)
 
 ## Key Architecture & Design Choices
 
