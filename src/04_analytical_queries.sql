@@ -9,7 +9,7 @@ FROM tenants
 GROUP BY country; 
 
 -- 3. Which apartment was the most popular (was rented the most times)?
-SELECT apt_id,COUNT(*) AS rental_count  
+SELECT apt_id, COUNT(*) AS rental_count  
 FROM Rentals  
 GROUP BY apt_id  
 ORDER BY rental_count DESC; 
@@ -26,19 +26,19 @@ FROM owners o
 JOIN apartments a ON o.tin = a.tin    
 GROUP BY o.tin, o.name, o.surname    
 ORDER BY num_apartments DESC    
-FETCH FIRST 1 ROWS ONLY; 
+FETCH FIRST 1 ROWS WITH TIES;
 
 -- 6. Which city has the most expensive apartment?
 SELECT city, MAX(price) AS Max_Price 
 FROM Apartments 
 GROUP BY city 
 ORDER BY Max_Price DESC 
-LIMIT 1; 
+FETCH FIRST 1 ROWS ONLY;
 
 -- 7. How many reviews were submitted in the year 2020?
 SELECT COUNT(review_id) AS review_count  
 FROM Reviews
-WHERE YEAR(rev_date)=2020; 
+WHERE TO_CHAR(rev_date, 'YYYY') = '2020';
 
 -- 8. Which tenant has submitted the most reviews?
 SELECT t.surname, t.name, COUNT(r.review_id) AS num_reviews    
@@ -46,7 +46,7 @@ FROM tenants t
 JOIN reviews r ON t.tnt_id = r.tnt_id    
 GROUP BY t.surname, t.name    
 ORDER BY num_reviews DESC    
-FETCH FIRST 1 ROWS ONLY; 
+FETCH FIRST 1 ROWS WITH TIES; 
 
 -- 9. Which apartments were rented in August (regardless of year)?
 SELECT DISTINCT a.apt_id, a.street_name, a.street_num, a.city, r.start_date  
@@ -77,7 +77,7 @@ WHERE o.TIN NOT IN (
 ); 
 
 -- 13. The tenants who have rented apartments on a street that contains the word "SAINT".
-SELECT t.name AS Tenant_Name, t.surname AS Tenant_Surname, t.email AS Tenant_Email,a.street_name AS Apartment_Street, a.city AS Apartment_City 
+SELECT DISTINCT t.name AS Tenant_Name, t.surname AS Tenant_Surname, a.street_name AS Apartment_Street, a.city AS Apartment_City 
 FROM Rentals r 
 JOIN Tenants t ON r.tnt_id = t.tnt_id 
 JOIN Apartments a ON r.apt_id = a.apt_id 
@@ -94,18 +94,18 @@ ORDER BY Average_Stars DESC;
 SELECT r.apt_id,AVG(r.stars) AS review_average
 FROM Reviews r
 JOIN Apartments a ON r.apt_id=a.apt_id
-WHERE a.city=’THESSALONIKI’ 
+WHERE a.city = 'THESSALONIKI' 
 GROUP BY r.apt_id
 ORDER BY review_average DESC
 FETCH FIRST 1 ROWS ONLY;
 
--- 16. Which tenant has rented the most apartments?
-SELECT t.name, t.surname, COUNT(r.apt_id) AS num_rentals    
+-- 16. Which tenant has the most rentals?
+SELECT t.name, t.surname, COUNT(r.apt_id) AS num_rentals
 FROM tenants t    
 JOIN rentals r ON t.tnt_id = r.tnt_id    
 GROUP BY t.name, t.surname    
 ORDER BY num_rentals DESC    
-FETCH FIRST 1 ROWS ONLY; 
+FETCH FIRST 1 ROWS WITH TIES;
 
 -- 17. The average review score for male and female tenants.
 SELECT t.gender AS Tenant_Gender, AVG(r.stars) AS Average_Score 
@@ -114,7 +114,7 @@ JOIN Tenants t ON r.tnt_id = t.tnt_id
 WHERE t.gender IN ('F', 'M') 
 GROUP BY t.gender; 
 
--- 18. The most popular city (the city with the most rentals) per gender.
+-- 18. Total rentals per city, categorized by gender, sorted by popularity.
 SELECT t.gender, a.city, COUNT(*) AS rental_count  
 FROM rentals r  
 JOIN apartments a ON r.apt_id = a.apt_id  
@@ -151,7 +151,7 @@ ORDER BY tnt_id desc;
 
 -- c1. All tenants from the United States.
 SELECT * FROM tenants  
-WHERE country='UNITED STATES'; 
+WHERE country = 'UNITED STATES'; 
 
 -- c2. All tenants whose name starts with A and ends with IS or whose name ends with IA. 
 SELECT * FROM tenants  
@@ -163,27 +163,27 @@ SELECT * FROM tenants
 WHERE country NOT IN ('GREECE','UNITED STATES')  
 	AND TO_CHAR(date_of_birth, 'YYYY') BETWEEN '1980' AND '2000'; 
 
--- d1. The tenants who rented the apartment 11.
-SELECT t.name, t.surname, t.country  
+-- d1. The tenants who rented apartment 11.
+SELECT DISTINCT t.name, t.surname
 FROM tenants t  
-INNER JOIN rentals ren ON ren.tnt_id=t.tnt_id  
-WHERE ren.apt_id=11; 
+JOIN rentals ren ON ren.tnt_id = t.tnt_id  
+WHERE ren.apt_id = 11; 
 
 -- d2. The tenants who rented apartments with a price less than 92 while the number of tenants in the apartment is less than or equal to 3. 
 SELECT distinct t.name, t.surname, t.email  
 FROM tenants t  
-INNER JOIN rentals ren ON ren.tnt_id=t.tnt_id	  
-INNER JOIN apartments apt ON apt.apt_id=ren.apt_id  
-WHERE t.num_of_tenants<=3  
-	AND apt.price<92; 
+JOIN rentals ren ON ren.tnt_id=t.tnt_id	  
+JOIN apartments apt ON apt.apt_id=ren.apt_id  
+WHERE t.num_of_tenants <= 3  
+	AND apt.price < 92; 
 
--- d3. The tenants who rented apartments in Athens with a review score of 5.
-SELECT o.name,o.surname,o.email AS owner_email,ren.apt_id,t.name,t.surname,t.email AS tenant_email,rev.start_date AS rental_date FROM owners o 
-INNER JOIN apartments apt ON apt.tin=o.tin  
-INNER JOIN rentals ren ON ren.apt_id=apt.apt_id  
-INNER JOIN tenants t ON t.tnt_id=ren.tnt_id  
-INNER JOIN reviews rev ON rev.tnt_id = ren.tnt_id AND rev.apt_id = ren.apt_id AND rev.start_date = ren.start_date  
-WHERE rev.stars<=2; 
+-- d3. Detailed information for all rentals that received 2 stars or lower.
+SELECT o.name, o.surname, o.email AS owner_email, ren.apt_id, t.name, t.surname, t.email AS tenant_email, rev.start_date AS rental_date FROM owners o 
+JOIN apartments apt ON apt.tin = o.tin  
+JOIN rentals ren ON ren.apt_id = apt.apt_id  
+JOIN tenants t ON t.tnt_id = ren.tnt_id  
+JOIN reviews rev ON rev.tnt_id = ren.tnt_id AND rev.apt_id = ren.apt_id AND rev.start_date = ren.start_date  
+WHERE rev.stars <= 2; 
 
 -- e1. The average price of apartments per city, rounded to 2 decimal places.
 SELECT city, ROUND(AVG(price),2) AS average_price 

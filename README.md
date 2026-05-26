@@ -32,3 +32,10 @@ Documentation and design artifacts are stored in `docs/`:
 - `docs/schema_design.pdf`: explanation of entity relationships and design choices
 - `docs/testing_validation.pdf`: summary of validation checks and outcomes
 - `docs/ER_diagram.jpg`: entity-relationship diagram for the schema
+
+## Tools used 
+
+- This project was developed within an **Oracle SQL** environment. 
+- **SQL*Plus** was used as a command-line interface to interact with the local Oracle database.
+- **DBeaver** was used as a more user-friendly database management tool. 
+- **dbdiagram.io** was used to draw the database ER diagram by writing DBML (Database Markup Language) code.
