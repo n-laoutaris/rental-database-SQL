@@ -29,9 +29,8 @@ The repository is organized into SQL scripts that were developed in a logical or
 
 Documentation and design artifacts are stored in `docs/`:
 
-- `docs/schema_design.pdf`: explanation of entity relationships and design choices
-- `docs/testing_validation.pdf`: summary of validation checks and outcomes
-- `docs/ER_diagram.jpg`: entity-relationship diagram for the schema
+- `docs/data_dictionary.md`: table definitions, datatypes, and governance constraints
+- `docs/ER_diagram.svg`: entity-relationship diagram for the schema
 
 ## Tools used 
 
