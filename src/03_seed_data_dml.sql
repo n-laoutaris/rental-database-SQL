@@ -10,10 +10,10 @@ INSERT ALL
   INTO Owners (tin, name, surname, gender, date_of_birth, email, city, tel) VALUES ('890123456', 'SOFIA', 'PAPADIMITRIOU', 'F', TO_DATE('15-AUG-1988', 'DD-MON-YYYY'), 'VLAXOU.MOORE@GMAIL.COM', 'RHODES', '6998665534') 
   INTO Owners (tin, name, surname, gender, date_of_birth, email, city, tel) VALUES ('901234567', 'XRISTOS', 'IOANNIDIS', 'M', TO_DATE('10-SEP-1983', 'DD-MON-YYYY'), 'IOANNIDIS.TAYLOR@GMAIL.COM', 'CORFU', '6977643361') 
   INTO Owners (tin, name, surname, gender, date_of_birth, email, city, tel) VALUES ('012345678', 'NATASA', 'OIKONOMOU', 'F', TO_DATE('05-OCT-1977', 'DD-MON-YYYY'), 'OIKONOMOU.ANDERSON@GMAIL.COM', 'KAVALA', '6997948819') 
-  INTO Owners (tin, name, surname, gender, date_of_birth, email, city, tel) VALUES ('109876542', 'KOSTAS', 'PAPAGEORGIOU', 'M', TO_DATE('25-NOV-1992', 'DD-MON-YYYY'), 'PAPAGEORGIOU.THOMAS@GMAIL.COM', '6930482939', 'LAMIA') 
-  INTO Owners (tin, name, surname, gender, date_of_birth, email, city, tel) VALUES ('210986543', 'DESPOINA', 'MICHAELIDOU', 'F', TO_DATE('30-DEC-1986', 'DD-MON-YYYY'), 'MICHAELIDOU.JACKSON@GMAIL.COM', '6903264080', 'KOMOTINI') 
-  INTO Owners (tin, name, surname, gender, date_of_birth, email, city, tel) VALUES ('321098654', 'DORA', 'PAPADAKI', 'F', TO_DATE('10-JAN-1981', 'DD-MON-YYYY'), 'PAPADAKI.WRIGHT@GMAIL.COM', '6906313058', 'CHALKIDA') 
-  INTO Owners (tin, name, surname, gender, date_of_birth, email, city, tel) VALUES ('432108765', 'EVA', 'DELEONARDI', 'F', TO_DATE('15-FEB-1984', 'DD-MON-YYYY'), 'DELEONARDI.HARRIS@GMAIL.COM', '6990336594', 'KATERINI') 
+  INTO Owners (tin, name, surname, gender, date_of_birth, email, city, tel) VALUES ('109876542', 'KOSTAS', 'PAPAGEORGIOU', 'M', TO_DATE('25-NOV-1992', 'DD-MON-YYYY'), 'PAPAGEORGIOU.THOMAS@GMAIL.COM', 'LAMIA', '6930482939') 
+  INTO Owners (tin, name, surname, gender, date_of_birth, email, city, tel) VALUES ('210986543', 'DESPOINA', 'MICHAELIDOU', 'F', TO_DATE('30-DEC-1986', 'DD-MON-YYYY'), 'MICHAELIDOU.JACKSON@GMAIL.COM', 'KOMOTINI', '6903264080') 
+  INTO Owners (tin, name, surname, gender, date_of_birth, email, city, tel) VALUES ('321098654', 'DORA', 'PAPADAKI', 'F', TO_DATE('10-JAN-1981', 'DD-MON-YYYY'), 'PAPADAKI.WRIGHT@GMAIL.COM', 'CHALKIDA', '6906313058') 
+  INTO Owners (tin, name, surname, gender, date_of_birth, email, city, tel) VALUES ('432108765', 'EVA', 'DELEONARDI', 'F', TO_DATE('15-FEB-1984', 'DD-MON-YYYY'), 'DELEONARDI.HARRIS@GMAIL.COM', 'KATERINI', '6990336594') 
 SELECT 1 FROM DUAL; 
 
 -- TABLE 2 : Apartments 
@@ -73,13 +73,13 @@ INSERT ALL
   INTO Rentals (apt_id, tnt_id, start_date, end_date) VALUES (12,11, TO_DATE('15-JAN-2024', 'DD-MON-YYYY'), TO_DATE('20-JAN-2024', 'DD-MON-YYYY')) 
   INTO Rentals (apt_id, tnt_id, start_date, end_date) VALUES (4,5, TO_DATE('05-MAR-2024', 'DD-MON-YYYY'), TO_DATE('01-APR-2024', 'DD-MON-YYYY')) 
   INTO Rentals (apt_id, tnt_id, start_date, end_date) VALUES (3,5, TO_DATE('15-MAY-2024', 'DD-MON-YYYY'), TO_DATE('30-MAY-2024', 'DD-MON-YYYY')) 
-  INTO Rentals (apt_id, tnt_id, start_date, end_date) VALUES (7,6, TO_DATE('01-JUL-2024', 'DD-MON-YYYY'), TO_DATE('01-AUG-2024', 'DD-MON-YYYY')) 
+  INTO Rentals (apt_id, tnt_id, start_date, end_date) VALUES (7,9, TO_DATE('22-MAR-2024', 'DD-MON-YYYY'), TO_DATE('01-AUG-2024', 'DD-MON-YYYY')) 
   INTO Rentals (apt_id, tnt_id, start_date, end_date) VALUES (11,13, TO_DATE('10-OCT-2024', 'DD-MON-YYYY'), TO_DATE('20-OCT-2024', 'DD-MON-YYYY')) 
   INTO Rentals (apt_id, tnt_id, start_date, end_date) VALUES (1,15, TO_DATE('01-JAN-2025', 'DD-MON-YYYY'), TO_DATE('02-JAN-2025', 'DD-MON-YYYY')) 
   INTO Rentals (apt_id, tnt_id, start_date, end_date) VALUES (8,8, TO_DATE('05-APR-2025', 'DD-MON-YYYY'), TO_DATE('15-APR-2025', 'DD-MON-YYYY')) 
-  INTO Rentals (apt_id, tnt_id, start_date, end_date) VALUES (4,17, TO_DATE('10-MAR-2020', 'DD-MON-YYYY'), TO_DATE('15-MAR-2020', 'DD-MON-YYYY')); 
-  INTO Rentals (apt_id, tnt_id, start_date, end_date) VALUES (6,1, TO_DATE('2-AUG-2020', 'DD-MON-YYYY'), TO_DATE('16-AUG-2020', 'DD-MON-YYYY')); 
-  INTO Rentals (apt_id, tnt_id, start_date, end_date) VALUES (10,7, TO_DATE('14-AUG-2020', 'DD-MON-YYYY'), TO_DATE('19-AUG-2020', 'DD-MON-YYYY')); 
+  INTO Rentals (apt_id, tnt_id, start_date, end_date) VALUES (4,17, TO_DATE('10-MAR-2020', 'DD-MON-YYYY'), TO_DATE('15-MAR-2020', 'DD-MON-YYYY'))
+  INTO Rentals (apt_id, tnt_id, start_date, end_date) VALUES (6,1, TO_DATE('2-AUG-2020', 'DD-MON-YYYY'), TO_DATE('16-AUG-2020', 'DD-MON-YYYY'))
+  INTO Rentals (apt_id, tnt_id, start_date, end_date) VALUES (10,7, TO_DATE('14-AUG-2020', 'DD-MON-YYYY'), TO_DATE('19-AUG-2020', 'DD-MON-YYYY'))
 SELECT 1 FROM DUAL; 
 
 -- Table 5: Reviews 
@@ -89,7 +89,7 @@ INSERT INTO Reviews(review_id, apt_id, tnt_id, start_date, rev_date, stars, text
 INSERT INTO Reviews(review_id, apt_id, tnt_id, start_date, rev_date, stars, text) VALUES (review_id_seq.NEXTVAL, 3,5, TO_DATE('15-MAY-2024', 'DD-MON-YYYY'), TO_DATE('05-JUN-2024', 'DD-MON-YYYY'),4, 'GREAT LOCATION AND VERY COZY. A FEW MINOR ISSUES WITH THE WI-FI, BUT THE HOST WAS QUICK TO RESOLVE THEM. WOULD STAY AGAIN!') ;  
 INSERT INTO Reviews(review_id, apt_id, tnt_id, start_date, rev_date, stars, text) VALUES (review_id_seq.NEXTVAL, 12,11, TO_DATE('15-JAN-2024', 'DD-MON-YYYY'), TO_DATE('05-FEB-2024', 'DD-MON-YYYY'),1, 'TERRIBLE EXPERIENCE. THE APARTMENT WAS DIRTY, THE APPLIANCES DID NOT WORK, AND THE HOST WAS UNRESPONSIVE.') ;  
 INSERT INTO Reviews(review_id, apt_id, tnt_id, start_date, rev_date, stars, text) VALUES (review_id_seq.NEXTVAL, 2,10, TO_DATE('01-JUL-2023', 'DD-MON-YYYY'), TO_DATE('05-AUG-2023', 'DD-MON-YYYY'),1, 'WORST DAYS OF MY LIFE!!!!! DO NOT ATTEMPT TO LIVE HERE IF YOU VALUE YOUR VACATION TIME!!!!!! ' ) ;  
-INSERT INTO Reviews(review_id, apt_id, tnt_id, start_date, rev_date, stars, text) VALUES (review_id_seq.NEXTVAL, 7,9, TO_DATE('10-MAR-2023', 'DD-MON-YYYY'), TO_DATE('05-JUN-2023', 'DD-MON-YYYY'),5, 'LOVELY APARTMENT WITH MODERN DECOR. THE STREET NOISE WAS NOTICEABLE AT NIGHT, BUT OVERALL A WONDERFUL EXPERIENCE.') ; 
+INSERT INTO Reviews(review_id, apt_id, tnt_id, start_date, rev_date, stars, text) VALUES (review_id_seq.NEXTVAL, 7,9, TO_DATE('22-MAR-2024', 'DD-MON-YYYY'), TO_DATE('05-JUN-2023', 'DD-MON-YYYY'),5, 'LOVELY APARTMENT WITH MODERN DECOR. THE STREET NOISE WAS NOTICEABLE AT NIGHT, BUT OVERALL A WONDERFUL EXPERIENCE.') ; 
 INSERT INTO Reviews(review_id, apt_id, tnt_id, start_date, rev_date, stars, text) VALUES (review_id_seq.NEXTVAL, 4,17, TO_DATE('10-MAR-2020', 'DD-MON-YYYY'), TO_DATE('05-JUN-2020', 'DD-MON-YYYY'),5, 'AMAZING APARTMENT AND GREAT LOCATION. DEFINITELY RECOMMENDED.') ; 
 INSERT INTO Reviews(review_id, apt_id, tnt_id, start_date, rev_date, stars, text) VALUES (review_id_seq.NEXTVAL, 6,1, TO_DATE('2-AUG-2020', 'DD-MON-YYYY'), TO_DATE('17-AUG-2020', 'DD-MON-YYYY'),4, 'VERY CHEAP FOR ITS SIZE, BUT PATRA WAS TOO HOT DURING THE SUMMER.') ;  
 INSERT INTO Reviews(review_id, apt_id, tnt_id, start_date, rev_date, stars, text) VALUES (review_id_seq.NEXTVAL, 10,7, TO_DATE('14-AUG-2020', 'DD-MON-YYYY'), TO_DATE('29-AUG-2020', 'DD-MON-YYYY'),4, 'VERY SATISFIED WITH THE ISLAND, BUT NOBODY HERE ACCEPTS HONEST-TO-GOODNESS AMERICAN DOLLARS. ') ; 

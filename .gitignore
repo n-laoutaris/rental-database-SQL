@@ -1,0 +1,4 @@
+# DBeabver ignores
+/.dbeaver
+.project
+/Scripts

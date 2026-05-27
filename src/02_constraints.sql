@@ -36,16 +36,17 @@ ALTER TABLE Rentals ADD CONSTRAINT CHK_Ren_dates CHECK (end_date > start_date);
 
 -- TABLE 5 : REVIEWS 
 ALTER TABLE Reviews ADD CONSTRAINT PK_review PRIMARY KEY (review_id); 
-ALTER TABLE Reviews ADD CONSTRAINT FK_Reviews_Rentals FOREIGN KEY (tnt_id, apt_id, start_date) REFERENCES Rentals (tnt_id, apt_id, start_date) ON DELETE CASCADE; 
+ALTER TABLE Reviews ADD CONSTRAINT FK_Reviews_Rentals FOREIGN KEY (apt_id, tnt_id, start_date) REFERENCES Rentals (apt_id, tnt_id, start_date) ON DELETE CASCADE; 
+ALTER TABLE Reviews ADD CONSTRAINT UQ_Rev_Rental UNIQUE (apt_id, tnt_id, start_date);
 ALTER TABLE Reviews ADD CONSTRAINT CHK_text CHECK (text = UPPER(text)); 
 ALTER TABLE Reviews MODIFY rev_date DEFAULT SYSDATE; 
 ALTER TABLE Reviews ADD CONSTRAINT CHK_stars CHECK (stars between 1 and 5); 
 
-DESC OWNERS; 
-DESC APARTMENTS; 
-DESC TENANTS; 
-DESC RENTALS; 
-DESC REVIEWS; 
+--DESC OWNERS; 
+--DESC APARTMENTS; 
+--DESC TENANTS; 
+--DESC RENTALS; 
+--DESC REVIEWS; 
 
 -- t2. Display all primary key constraints in the current schema
 SELECT CONSTRAINT_NAME, TABLE_NAME FROM USER_CONSTRAINTS WHERE CONSTRAINT_NAME LIKE 'PK%';  

@@ -31,6 +31,7 @@ Documentation and design artifacts are stored in `docs/`:
 
 - `docs/data_dictionary.md`: table definitions, datatypes, and governance constraints
 - `docs/ER_diagram.svg`: entity-relationship diagram for the schema
+- `docs/database.dbml`: the DBML defining database schema and structure
 
 ## Tools used 
 

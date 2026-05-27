@@ -50,7 +50,7 @@ CREATE TABLE Reviews (
     apt_id NUMBER(7,0) NOT NULL,  -- References rentals, Foreign key 
     tnt_id NUMBER(7,0) NOT NULL,  -- References rentals, Foreign key 
     start_date DATE NOT NULL,  -- References rentals , Foreign key 
-    rev_date TIMESTAMP,  -- Date of the review  
+    rev_date DATE,  -- Date of the review  
     stars NUMBER(1,0),  -- Star rating between 1 and 5  
     text VARCHAR2(500)  -- Review text  
 ); 
@@ -66,10 +66,10 @@ SELECT * FROM TAB WHERE tname NOT LIKE 'BIN%';
 SELECT sequence_name FROM user_sequences;
 
 -- Display details of the table such as column names, data types, constraints 
-DESC OWNERS; 
-DESC APARTMENTS; 
-DESC TENANTS; 
-DESC RENTALS; 
-DESC REVIEWS; 
+--DESC OWNERS; 
+--DESC APARTMENTS; 
+--DESC TENANTS; 
+--DESC RENTALS; 
+--DESC REVIEWS; 
 
  

@@ -1,0 +1,63 @@
+Table Owners {
+  tin varchar2(9) [primary key]
+  name varchar2(35) [not null]
+  surname varchar2(35) [not null]
+  gender char(1)
+  date_of_birth date
+  email varchar2(255) [not null]
+  tel varchar2(10) [not null]
+  city varchar2(35)
+}
+
+Table Apartments {
+  apt_id number(7,0) [primary key]
+  tin varchar2(9) [not null]
+  price number(5,2) [not null]
+  area number(5,2)
+  street_name varchar2(80)
+  street_num varchar2(5)
+  zip_code varchar2(5)
+  city varchar2(30) [not null]
+  floor number(2,0)
+}
+
+Table Tenants {
+  tnt_id number(7,0) [primary key]
+  name varchar2(50) [not null]
+  surname varchar2(50) [not null]
+  gender char(1)
+  country varchar2(35)
+  email varchar2(255) [not null]
+  tel varchar2(10)
+  date_of_birth date
+  num_of_tenants number(2,0) [default: 1]
+}
+
+Table Rentals {
+  apt_id number(7,0) [primary key]
+  tnt_id number(7,0) [primary key]
+  start_date date [primary key]
+  end_date date
+}
+
+Table Reviews {
+  review_id number(7,0) [primary key]
+  apt_id number(7,0) [not null]
+  tnt_id number(7,0) [not null]
+  start_date date [not null]
+  rev_date date [default: `SYSDATE`]
+  stars number(1,0)
+  text varchar2(500)
+  
+  indexes {
+    (apt_id, tnt_id, start_date) [unique]
+  }
+}
+
+// 1-to-Many Relationships
+Ref: Apartments.tin > Owners.tin [delete: cascade]
+Ref: Rentals.apt_id > Apartments.apt_id [delete: cascade]
+Ref: Rentals.tnt_id > Tenants.tnt_id [delete: cascade]
+
+// 1-to-1 Relationship 
+Ref: Rentals.(apt_id, tnt_id, start_date) - Reviews.(apt_id, tnt_id, start_date) [delete: cascade]

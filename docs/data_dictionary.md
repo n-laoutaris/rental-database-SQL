@@ -65,6 +65,6 @@ This document outlines the schema, datatypes and governance constraints for the 
 | `apt_id` | `NUMBER(7,0)` | **FK** | Yes | `ON DELETE CASCADE` | Part of composite FK to `Rentals`. |
 | `tnt_id` | `NUMBER(7,0)` | **FK** | Yes | `ON DELETE CASCADE` | Part of composite FK to `Rentals`. |
 | `start_date` | `DATE` | **FK** | Yes | `ON DELETE CASCADE` | Part of composite FK to `Rentals`. |
-| `rev_date` | `TIMESTAMP` | - | No | Default: `SYSDATE` | Date of the review submission. |
+| `rev_date` | `DATE` | - | No | Default: `SYSDATE` | Date of the review submission. |
 | `stars` | `NUMBER(1,0)` | - | No | `BETWEEN 1 AND 5` | Star rating. |
 | `text` | `VARCHAR2(500)` | - | No | `UPPER()` enforced | Review text. |
